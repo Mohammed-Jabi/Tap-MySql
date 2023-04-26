@@ -1,0 +1,94 @@
+CREATE online _store;
+CREATE TABLE customers(customer_id INT AUTO_INCREMENT PRIMARY KEY,
+			first_name VARCHAR(50) NOT NULL,
+			last_name VARCHAR(50) NOT NULL,
+			email VARCHAR(100) NOT NULL UNIQUE,
+			phone VARCHAR(50) NOT NULL UNIQUE,
+			city VARCHAR(50) NOT NULL);
+
+INSERT INTO `online _store`.customers(first_name, last_name, email, phone, city)
+		VALUES('Rohit', 'Sharma', 'rohit.sharma@gmail.com', '+91999999999', 'Bengalore'),
+			('Anjali', 'Gupta', 'anjali.gupta@gmail.com', '+918888888888', 'Mumbai'),
+			('Vijay', 'Kumar', 'vijay.kumar@gmail.com', '+917777777777', 'Delhi'),
+			('Priya', 'Singh', 'priya.singh@gmail.com', '+917878787878', 'Mumbai'),
+			('Ravi', 'Patel', 'ravi.patail@gmail.com', '+918989898989', 'Pune');
+
+CREATE TABLE `online _store`.products(product_id INT AUTO_INCREMENT PRIMARY KEY,
+			product_name VARCHAR(50) NOT NULL UNIQUE,
+			price DECIMAL(10, 2) NOT NULL,
+			stock INT NOT NULL);
+
+INSERT INTO `online _store`.products(product_name, price, stock)
+		VALUES('Smartphone',25000.00,100),
+			('Laptop',70000.00,50),
+			('Tablet',15000.00,40),
+			('Headphone',20000.00,200),
+			('Smartwatch',12000.00,40);
+
+
+CREATE TABLE `online _store`.orders(order_id INT AUTO_INCREMENT PRIMARY KEY,
+			customer_id INT NOT NULL,
+			order_date DATE NOT NILL,
+			FORIGN KEY (customer_id) REFERENCES customers(customer_id));
+
+
+INSERT INTO `online _store`.orders(customer_id,order_date)
+		VALUES(1,'2023-01-10'),
+			(2,'2023-01-12'),
+			(3,'2023-01-15'),
+			(4,'2023-01-18'),
+			(5,'2023-01-22');
+
+CREATE TABLE `online _store`.orders_items(order_items_id INT AUTO_INCREMENT PRIMARY KEY,
+			order_id INT NOT NULL,
+			product_id INT NOT NULL,
+			quantity INT NOT NULL,
+			FORIGN KEY (order_id) REFERENCES orders(order_id),
+			FORIGN KEY (product_id) REFERENCES products(product_id));
+
+INSERT INTO `online _store`.orders_items(order_iD, product_iD, quantity)
+			VALUES(1,1,1),
+				(1,2,1),
+				(2,3,1),
+				(3,1,1),
+				(3,2,1),
+				(3,3,1),
+				(4,4,1),
+				(5,5,1);
+
+
+
+
+`online _store`.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
