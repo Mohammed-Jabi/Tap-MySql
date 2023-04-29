@@ -61,27 +61,77 @@ INSERT INTO `online _store`.orders_items(order_iD, product_iD, quantity)
 
 `online _store`.
 
+SELECT * FROM orders;
+
+#unique values
+
+SELECT DISTINCT customer_id FROM orders;
+
+#where clus
+
+#SELECT column1,column2,..... FROM table_name WHERE condition;
+
+#Select product whic have price equal to 15000.
+SELECT * FROM products WHERE price=15000;
 
 
+#Select product whic have price notequal to 15000.
+SELECT * FROM products WHERE price !=15000;
+SELECT * FROM products WHERE price <>15000;
 
 
+#Select product whic have price greater than 20000.
+SELECT * FROM products WHERE price >20000;
+
+#Select product whic have price less than 20000.
+SELECT * FROM products WHERE price <20000;
+
+#Select product whic have price greaterthan or equal to 25000.
+SELECT * FROM products WHERE price >=25000;
+
+#Select product whic have price lessthan or equal to 25000.
+SELECT * FROM products WHERE price <=25000;
+
+#Find all products whose price is greater than 15000 and whose stock is 50 and above.
+#SELECT * FROM products WHERE price >15000 AND stock >=50;
+SELECT product_name AS name, price, stock FROM products WHERE price >15000 AND stock >=50;
+
+#FIND ALL CUSTOMERS FROM THE CITIES OF MUMBAI OR DELHI.
+SELECT first_name AS name, city FROM customers WHERE city="Mumbai" OR city="Delhi";
+
+#FIND ALL ORDERS THAT WERE PLACED BETWEEN '2023-01-01' AND '2023-03-31'
 
 
+#FIND ALL ORDERS THAT WERE NOT PLACED BETWEEN '2023-01-01' AND '2023-03-31'
+#SELECT order_id AS id, order_date AS date FROM ORDERS WHERE order_date >="2023-01-01" AND order_date '2023-03-31';
+SELECT order_id AS id, order_date AS date FROM ORDERS WHERE order_date BETWEEN >="2023-01-01" AND "2023-03-31";
+
+#FIND ALL ORDERS THAT WERE NOT PLACED NOT BETWEEN '2023-01-01' AND '2023-03-31'
+SELECT order_id AS id, order_date AS date FROM ORDERS WHERE order_date NOT  BETWEEN >="2023-01-01" AND "2023-03-31";
 
 
+#SELECT FIRSTNAME AND EMAIL BELONG TO BENGALURU MUMBAI PUNE
+SELECT first_name AS name, email, city FROM customers WHERE city = "Bengaluru" OR city = "Mumbai" OR city = "Pune"; 
+SELECT first_name AS name, email, city FROM customers WHERE city IN("Bengaluru","Mumbai","Pune");
+
+#WILD CARD
+SELECT city FROM customers WHERE city LIKE '%i'; 
+
+SELECT city FROM customers WHERE city LIKE 'D___i'; 
+
+#COUNT
+SELECT COUNT(*) FROM products;
+SELECT COUNT(product_name) AS product_count FROM products;
+
+#MAX AND MIN
+SELECT MAX(price) AS max_price, MIN(price) AS min_price FROM products;
+
+#AVG
+SELECT AVG(price) AS avg_price FROM products;
 
 
-
-
-
-
-
-
-
-
-
-
-
+#SUM
+SELECT SUM(price) AS sum_price FROM products;
 
 
 
