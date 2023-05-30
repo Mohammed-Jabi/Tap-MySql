@@ -1,0 +1,41 @@
+CREATE TABLE `placement_management`.user(u_id INT AUTO_INCREMENT PRIMARY KEY,
+					name VARCHAR(150) NOT NULL,
+					type VARCHAR(150) NOT NULL,
+					password STRING NOT NULL)
+
+CREATE TABLE `placement_management`.college(c_id INT AUTO_INCREMENT PRIMARY KEY,
+					collegeAdmin INT NOT NULL,
+					collegeNAme VARCHAR(150) NOT NULL,
+					location VARCHAR(150) NOT NULL,
+					FOREIGN KEY (collegeAdmin) REFERENCES user(u_id));
+
+
+CREATE TABLE `placement_management`.certificate(ct_id INT AUTO_INCREMENT PRIMARY KEY,
+						year VARCHAR(150) NOT NULL,
+						college INT NOT NULL,
+						FOREIGN KEY (college) REFERENCES college(c_id));
+
+CREATE TABLE `placement_management`.admin(a_id INT AUTO_INCREMENT PRIMARY KEY,
+					name VARCHAR(150) NOT NULL,
+					password VARCHAR(150) NOT NULL)
+
+
+CREATE TABLE `placement_management`.student(s_id INT AUTO_INCREMENT PRIMARY KEY,
+						name VARCHAR(150) NOT NULL,
+						college_id INT NOT NULL,
+						roll INT NOT NULL,
+						qualification VARCHAR(150) NOT NULL,
+						course VARCHAR(150) NOT NULL,
+						year INT NOT NULL,
+						certificate_id INT NOT NULL,
+						FOREIGN KEY (college_id) REFERENCES college(c_id),
+						FOREIGN KEY (certificate_id) REFERENCES certificate(ct_id));
+
+
+CREATE TABLE `placement_management`.placement(p_id INT AUTO_INCREMENT PRIMARY KEY,
+						name VARCHAR(150) NOT NULL,
+						college_id INT NOT NULL,
+						date VARCHAR(50) NOT NULL,
+						qualification VARCHAR(50) NOT NULL,
+						year INT NOT NULL,
+						FOREIGN KEY (college_id) REFERENCES college(c_id))	
